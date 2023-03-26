@@ -14,39 +14,126 @@ topics: ["PHP"]
 - ファイル名は`index.php`とする必要がある
   - この名前がデフォルトファイルとしてWebサーバーによって認識される特別なファイル名であるため
   - Webサーバーは、ディレクトリへのリクエストを受信すると、そのディレクトリ内にあるindex.htmlまたはindex.phpという名前のファイルを検索し、それをクライアントに提供します。
-    - デフォルトを変更するには、
-      - .htaccessファイルを使用する
-        - Apache Webサーバーで使用される構成ファイル
-          - ディレクトリのデフォルトファイルにsite.php、次にsite.htmlを使用したい場合 
-            - その設定を適用したいディレクトリに`.htaccess`を作成
-            - `.htaccess`内に`DirectoryIndex site.php site.html` を記述
-          - メインのサーバー設定ファイルを編集することなく、特定のディレクトリに対してデフォルトのサーバー設定を上書きすることができる
+    - デフォルトを変更するには、`.htaccess`ファイルを使用する
+      - Apache Webサーバーで使用される構成ファイル
+        - ディレクトリのデフォルトファイルにsite.php、次にsite.htmlを使用したい場合 
+          - その設定を適用したいディレクトリに`.htaccess`を作成
+          - `.htaccess`内に`DirectoryIndex site.php site.html` を記述
+        - メインのサーバー設定ファイルを編集することなく、特定のディレクトリに対してデフォルトのサーバー設定を上書きすることができる
+    - 単に，URLを`<original-url>/site.php`とすることでもアクセス可能
+- PHPファイルを提供するディレクトリは`/var/www/html/`がデフォルト
+  - 変更することもできる
+    - `httpd.conf`ファイルを作成
+    - `DocumentRoot <directory path>`を追加
 # Hello World & Setup
 PHPはHTMLと深く結びついていて，PHPファイル内でも普通にHTMLを記述することができる
 # Writing HTML
+- echo
+  - 引数をHTMLにレンダリングする
+
+ページを更新するたびに，サーバはPHPコードを上から順に実行し，その結果をHTMLと統合し，ページに表示している
 # Variables
+- 変数は単なるコンテナであり，何か特定の情報を格納しておく
+  - 代入時に型指定を行わなくてよい
 # Data Types
+- String
+  - `$phrase = "To be ot not to be";`
+  - `"`で囲われているモノは全て文字列と認識される
+- Integer
+  - `$age = -30;`
+- Decimal（小数）
+  - `$gpa = 2.45234;`
+  - PHPでは`30`と`30.0`は区別される
+- Boolean
+  - `$isLogin = false;`
+- Null
+  - `null`
+  - 値がないことを表す
 # Working With Strings
+- 小文字化
+  - `strtolower($val);`
+- 大文字化
+  - `strtoupper($val);`
+- 長さ
+  - `strlen($val);`
+- インデックス
+  - `$val[index]`
+  - indexは先頭文字からの距離を表す
+  - 一度定義した文字列もインデックスを指定して変更することができる
+    - `$val[0] = "a"`
+- 置換
+  - `str_replace("original", "new", $val);`
+- 部分文字列
+  - `substr($val, startindex, length)`
 # Working With Numbers
+- インクリメント
+  - `$num++;`
+  - 1以外の数値を足したい場合
+    - `$num += 2.5`
+- デクリメント
+  - `$num--`
+- 絶対値
+  - `abs($num)`
+- 累乗
+  - `pow($num, exponent)`
+- 平方根
+  - `sqrt($num)`
+- 比較
+  - `max(num1, num2, num3, ...)`
+  - `min(num1, num2, num3, ...)`
+- 四捨五入
+  - `round($num)`
+- 切り上げ
+  - `ceil($num)`
+- 切り捨て
+  - `floor($num)`
 # Getting User Input
-# Building a Basic Calculator
-# Building a Mad Libs Game
-# URL Parameters
+- フォームを設定する
+  - `action`
+    - このフォームを処理できるようにしたいPHPページの名前を設定する
+  - `method`
+    - このフォームで何をしようとしているのかを設定する
+- 入力ボックスを設置する
+  - `name`
+    - 取得するコンテンツの種類を説明する名前
+      - 一意である必要がある
+- 送信ボタンを設置する
+- PHPタグの中で入力を受け取り，処理を行う
+  - フォームの入力データは`$_<method>[<name>]`でアクセスできる
+  - 入力データはURLのパラメータ内に組み込まれて受け渡される
+    - `<originalURL>/<action>?<name>=<input>&...`
 # POST vs GET
+- GET
+  - ユーザーの入力がURLのパラメータを介してサーバに受け渡される
+    - ブックマークしておける
+    - ユーザーの入力が第三者に盗まれる・改変される恐れがある
+- POST
+  - ユーザーの入力がユーザーには見えない形でサーバに受け渡される
+    - ユーザーの入力が見えないため，安全性が高い
 # Arrays
+- どんな型でも一緒に格納することができる
+- 配列の値は個々に再代入可能
+  - 元の値と異なるデータ型を再代入することも可能
+- 配列の個数を追加することも可能
+  - 再代入と同じ要領でできる
+  - 飛び地のインデックスも指定できる
+    - 飛び地の間のメモリは`undefined`のまま
 # Using Checkboxes
-# Associative Arrays
-# Functions
-# Return Statements
-# If Statements
-# If Statements (con't)
+- チェックがついた項目が配列になって受け渡される
+# Associative Arrays（連想配列）
+- キーとバリューのペアを格納する
+  - キーは配列内で一意になる必要がある
 # Building a Better Calculator
-# Switch Statements
-# While Loops
-# For Loops
-# Comments
+- `<input type="number" name="num1">`だと，整数しか受け付けず，小数の入力はエラーではじかれてしまう
+  - `<input type="number" step="0.1" name="num1">`とすることで，0.1刻みの値を受け付けるように設定できる
 # Including HTML
+- 外部のHTMLファイルをインクルードする
+  - HTMLファイルを再利用可能なコンポーネントに分けるという手法を取ることができる
+    - 保守性の向上（ETC！）
 # Include: PHP
+- 機能としてはシンプルに外部コードを指定箇所へコピーしたうえでプログラムを実行しているだけ
+- テンプレートファイルを作成し，それをインクルードして，そのファイルに変数の値を与えると，変数値ごとに異なったHTMLページを創り出すことができる
+  - このように静的HTMLファイルだけでなく，動的なPHPファイルもインクルードして利用することができるのが，インクルードの利点
 # Classes & Objects
 # Constructors
 # Object Functions - PHP - Tutorial 31
