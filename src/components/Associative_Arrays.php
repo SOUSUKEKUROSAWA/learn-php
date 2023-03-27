@@ -1,4 +1,4 @@
-<form action="site.php" method="post">
+<form action="/" method="post">
     Student Name: <input type="text" name="student">
     <input type="submit">
 </form>

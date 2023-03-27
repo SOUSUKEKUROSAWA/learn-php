@@ -1,4 +1,4 @@
-<form action="site.php" method="get">
+<form action="/" method="get">
     Name: <input type="text" name="username">
     <input type="submit">
 </form>

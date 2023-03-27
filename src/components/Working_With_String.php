@@ -2,7 +2,6 @@
     // echo
     $greeting = "Hello";
     echo "<h1>$greeting World!</h1>";
-    echo "<hr>";
     echo "<p>$greeting</p>";
     // strlower
     $greeting = "CHAO";

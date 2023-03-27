@@ -1,4 +1,4 @@
-<form action="site.php" method="post">
+<form action="/" method="post">
     <input type="checkbox" name="fruits[]" value="apples">Apples<br>
     <input type="checkbox" name="fruits[]" value="oranges">Oranges<br>
     <input type="checkbox" name="fruits[]" value="pears">Pears<br>
